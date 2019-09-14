@@ -58,7 +58,6 @@ public class WoTServlet extends HttpServlet {
 	{
 		DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.FULL, currentLocale);
 		DateFormat timeFormatter = DateFormat.getTimeInstance(DateFormat.DEFAULT, currentLocale);
-		String currentDate = dateFormatter.format(new java.util.Date());
 		res.setContentType ("text/html");
 		res.setCharacterEncoding(ENCODING);
 		PrintWriter  out = res.getWriter ( );
@@ -75,7 +74,8 @@ public class WoTServlet extends HttpServlet {
 		out.println("<tr><td>Your name:</td><td><input name=\"author\" type=\"text\" size=70></td><td></td></tr>");
 		out.println("<tr><td>Your tweet:</td><td><textarea name=\"tweet_text\" rows=\"2\" cols=\"70\" wrap></textarea></td>"); 
 		out.println("<td><input type=\"submit\" name=\"action\" value=\"Tweet!\"></td></tr>"); 
-		out.println("</table></form></div>"); 
+		out.println("</table></form></div>");
+		String currentDate = "None";
 		for (Tweet tweet: tweets) {
 			String messDate = dateFormatter.format(tweet.getDate());
 			if (!currentDate.equals(messDate)) {
